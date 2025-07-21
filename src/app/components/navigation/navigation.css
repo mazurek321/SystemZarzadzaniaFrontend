@@ -1,0 +1,81 @@
+nav
+{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 275px;
+    height: 100vh;
+    background: var(--background-navigation);
+    box-shadow: 3px 0 5px black;
+    z-index: 1000;
+}
+
+nav header 
+{
+    text-align: center;
+    padding: 30px 15px;
+    color: #f0f0f0;
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 25px;
+}
+
+nav header .icon
+{
+    color: #f0f0f0;
+    width: fit-content;
+}
+
+nav header h1
+{
+    width: 100%;
+}
+
+nav ul
+{
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+nav ul li
+{
+    padding: 15px;
+    cursor: pointer;
+    position: relative;
+    transition: var(--transitionTime) all linear;
+    color: #f0f0f0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+nav ul li:hover,
+nav ul li.active
+{
+    background: linear-gradient(to right,var(--background-navigation-active), transparent);
+    box-shadow: 0 3px 5px black;
+    color: white;
+    text-shadow: 0 0 3px black;
+}
+
+
+nav.isHidden
+{
+    width: 50px;
+}
+
+nav.isHidden header,
+nav.isHidden ul
+{
+    justify-content: center;
+}
+
+nav.isHidden h1,
+nav.isHidden ul li span:is(:not(.icon))
+{
+    display: none;
+}

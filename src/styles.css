@@ -1,1 +1,43 @@
-/* You can add global styles to this file, and also import other style files */
+:root
+{
+  --background-navigation: linear-gradient(125deg, rgb(1, 1, 73), rgb(110, 84, 131));
+  --background-navigation-active: rgb(43, 179, 169);
+  --background-navigation-active-caffel: rgb(12, 86, 91);
+
+  --background-top-bar: rgb(235, 235, 235);
+  --background-top-bar-dark: rgb(212, 212, 212);
+  --background-reminder: rgb(171, 171, 255);
+  --background-alert: rgb(237, 168, 168);
+  --background-normal: rgb(244, 231, 169);
+
+  --transitionTime: 100ms;
+}
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.icon
+{
+  cursor: pointer;
+}
+
+body{
+  background: #f5f5f5;
+}
+
+a{
+  text-decoration: none;
+  color: inherit;
+}

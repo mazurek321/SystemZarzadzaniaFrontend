@@ -1,0 +1,13 @@
+<nav [class.isHidden]="isHidden">
+    <header>
+        <h1>Task Managment</h1>
+        <span class="material-symbols-outlined icon"
+            (click) = "toggleMenu()"
+        >menu</span>
+    </header>
+    <ul>
+        <li class="active"><span class="material-symbols-outlined icon">dashboard_2</span><span>Dashboard</span></li>
+        <li><span class="material-symbols-outlined icon">assignment</span><span>Tasks</span></li>
+        <li><span class="material-symbols-outlined icon">group</span><span>Users</span></li>
+    </ul>
+</nav>

@@ -1,0 +1,50 @@
+<div class="topBar">
+    <div class="searchbar">
+        <div class="search">
+            <input type="text" placeholder="Search...">
+            <span class="material-symbols-outlined icon">search</span>
+        </div>
+    </div>
+    <div class="notifications">
+        <span class="material-symbols-outlined icon" (click)="toggleNotif()">notifications</span>
+        <div class="count">9</div>
+
+        <div class="cover-content" [class.notifIsHidden]="notifIsHidden" (click) = "toggleNotif()"></div>
+        <div class="notifications-dropdown" [class.notifIsHidden]="notifIsHidden">
+            <h3>Notifications</h3>
+            <div class="notifications-list">
+                <div class="notification reminder">
+                    <h4>
+                        <span>Reminder</span>
+                        <span>2025-07-21 18:40</span>
+                    </h4>
+                    <p>The deadline of task ... is comming.</p>
+                    <div class="notif-button">
+                        <button>Delete</button>
+                    </div>
+                </div>
+            </div>
+        </div>  
+    </div>
+    <div class="user">
+        <div class="info" (click) = "toggleUser()">
+            <span>Alan</span>
+            <span>Dąbek</span>
+            <span class="material-symbols-outlined icon">keyboard_arrow_down</span>
+        </div>
+
+
+        <div class="cover-content" [class.userIsHidden]="userIsHidden" (click) = "toggleUser()"></div>
+        <div class="user-dropdown" [class.userIsHidden]="userIsHidden">
+            <h3>User panel</h3>
+            <a class="caffel" routerLink="/user">
+                <span class="material-symbols-outlined icon">settings</span>
+                <span>Settings</span>
+            </a>
+            <a class="caffel" routerLink="">
+                <span class="material-symbols-outlined icon">logout</span>
+                <span>Logout</span>
+            </a>
+        </div>
+    </div>
+</div>
