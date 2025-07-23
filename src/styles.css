@@ -4,6 +4,9 @@
   --background-navigation-active: rgb(43, 179, 169);
   --background-navigation-active-caffel: rgb(12, 86, 91);
 
+  --background-button: rgb(110, 84, 131);
+  --background-submit-button: rgb(14, 163, 14);
+
   --background-top-bar: rgb(235, 235, 235);
   --background-top-bar-dark: rgb(212, 212, 212);
   --background-reminder: rgb(171, 171, 255);
@@ -40,4 +43,61 @@ body{
 a{
   text-decoration: none;
   color: inherit;
+}
+
+button
+{
+  cursor: pointer;
+  z-index: 1;
+}
+
+
+
+form div:not(
+    .remember-me-container,
+    .remember-me-checkbox,
+    .button-container,
+    .auth-container
+)
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid black;
+    background: rgb(252, 252, 252);
+    border-radius: 7px;
+    padding: 2px 5px;
+    margin: 1em 0;
+}   
+
+input,
+textarea,
+select
+{
+    font-size: 16px;
+    padding: 7px;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='date'],
+textarea,
+select
+{
+    width: 20em;
+    background: transparent;
+    border: none;
+    outline: none;
+}  
+
+input::placeholder,
+textarea::placeholder
+{
+    font-size: 14px;
+    color: black;
+}
+
+textarea
+{
+  resize: none;
 }

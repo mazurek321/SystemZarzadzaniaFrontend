@@ -9,7 +9,6 @@ import { RouterModule } from '@angular/router';
   template: `
     <app-navigation/>
     <app-top-bar/>
-
     <router-outlet></router-outlet>
   `,
   styleUrl: './home.css'

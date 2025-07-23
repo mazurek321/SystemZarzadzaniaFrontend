@@ -3,7 +3,7 @@ nav
     position: fixed;
     top: 0;
     left: 0;
-    width: 275px;
+    width: 250px;
     height: 100vh;
     background: var(--background-navigation);
     box-shadow: 3px 0 5px black;
@@ -13,7 +13,7 @@ nav
 nav header 
 {
     text-align: center;
-    padding: 30px 15px;
+    padding: 13px 15px;
     color: #f0f0f0;
     position: relative;
     display: flex;
@@ -31,6 +31,7 @@ nav header .icon
 nav header h1
 {
     width: 100%;
+    font-size: 20px;
 }
 
 nav ul
@@ -39,18 +40,23 @@ nav ul
     display: flex;
     flex-direction: column;
     gap: 10px;
+    margin-top: 1em;
 }
 
 nav ul li
 {
-    padding: 15px;
     cursor: pointer;
     position: relative;
     transition: var(--transitionTime) all linear;
     color: #f0f0f0;
+}
+
+nav ul li a
+{
     display: flex;
     align-items: center;
     gap: 10px;
+    padding: 15px;
 }
 
 nav ul li:hover,

@@ -1,0 +1,130 @@
+<div class="container">
+    <div class="panel">
+        <div class="left">
+            <button class="active">My tasks</button>
+            <button>All tasks</button>
+            <button>Ended tasks</button>
+        </div>
+        <div class="right">
+            <div class="cover-content" (click)="toggleFilter()" [class.isFilterHidden]="isFilterHidden"></div>
+            <span class="material-symbols-outlined icon" (click)="toggleFilter()">filter_list</span>
+            <div class="filter-container" [class.isFilterHidden]="isFilterHidden">
+                <h3>Sort by</h3>
+                <ul>
+                    <li>
+                        <input type="checkbox" value="title">
+                        <span>Title</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="title">
+                        <span>Priority</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="title">
+                        <span>Deadline</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="title">
+                       <span>Start date</span>
+                    </li>
+                    <li>
+                        <input type="checkbox" value="title">
+                        <span>End date</span>
+                    </li>
+                </ul>
+            </div>
+
+            <button class="add-task" (click)="toggleTaskPanel()">Add task</button>
+
+            <div class="add-task-container" [class.isTaskPanelHidden]="isTaskPanelHidden">
+                <div class="cover-content" (click)="toggleTaskPanel()"></div>
+                <div class="content">
+                    <div class="top">
+                        <h3>Add new task</h3>
+                        <button (click)="toggleTaskPanel()">Close</button>
+                    </div>
+                    <form action="">
+
+                        <div class="title-container">
+                            <span class="material-symbols-outlined">title</span>
+                            <input type="text"placeholder="Title">
+                        </div>
+                        <div class="description-container">
+                            <span class="material-symbols-outlined">description</span>
+                            <textarea type="text"placeholder="Description" rows="1"></textarea>
+                        </div>
+                        <div class="priority-container">
+                            <span class="material-symbols-outlined">priority_high</span>
+                            <select name="prority_name" id="priority_id">
+                                <option value="default" disabled selected>Priority</option>
+                                <option value="low">Low</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+                        <div class="deadline-container">
+                            <span class="material-symbols-outlined">acute</span>
+                            <label for="deadline">Deadline</label>
+                            <input type="date" [(ngModel)]="taskForm.deadline" name="deadline">
+                        </div>
+                        <div class="startdate-container">
+                            <span class="material-symbols-outlined">alarm_add</span>
+                            <label for="deadline">Start date*</label>
+                            <input type="date" [(ngModel)]="taskForm.deadline" name="deadline">
+                        </div>
+
+                        <div class="categories-container">
+                            <span class="material-symbols-outlined">category</span>
+                            <select multiple name="prority_name" id="category" row>
+                                <option value="default" disabled selected>Categories</option>
+                                <option value="medium">Medium</option>
+                                <option value="high">High</option>
+                                <option value="high">High</option>
+                                <option value="high">High</option>
+                                <option value="high">High</option>
+                                <option value="high">High</option>
+                                <option value="high">High</option>
+                                <option value="high">High</option>
+                                <option value="high">High</option>
+                            </select>
+                        </div>
+
+                        <div class="button-container">
+                            <button class="submit">Submit</button>
+                            <button type="reset">Reset</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="task-list">
+
+        <table>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Priority</th>
+                <th>Deadline</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th>Created by</th>
+                <th>Actions</th>
+            </tr>
+            <tbody>
+                <tr class="task-row">
+                    <td>Web dev</td>
+                    <td>Create website with REST API</td>
+                    <td>Low</td>
+                    <td>2025-07-23</td>
+                    <td>2025-07-23</td>
+                    <td>-</td>
+                    <td>mazurek321.93@wp.pl</td>
+                    <td><span class="material-symbols-outlined icon">more_vert</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+    </div>
+</div>

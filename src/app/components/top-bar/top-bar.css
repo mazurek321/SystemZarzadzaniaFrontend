@@ -6,7 +6,10 @@
     display: flex;
     justify-content: right;
     padding: 15px 100px;
-    position: relative;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
 }
 
 
@@ -50,6 +53,7 @@
     position: relative;
 }
 
+
 .topBar .notifications .count
 {
     background: rgb(205, 7, 7);
@@ -83,7 +87,7 @@
     width: 300px;
     left: -140px;
     top: 35px;
-    z-index: 1000;
+    z-index: 10000;
 }
  
 ::-webkit-scrollbar {
@@ -167,6 +171,7 @@
     left: 0;
     width: 100vw;
     height: 100vh;
+    z-index: -1;
 }
 
 .notifications-dropdown.notifIsHidden
