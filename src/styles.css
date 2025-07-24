@@ -6,12 +6,34 @@
 
   --background-button: rgb(110, 84, 131);
   --background-submit-button: rgb(14, 163, 14);
+  --background-close-button: rgb(170, 6, 6);
+
+  --background-cover-content:rgba(0, 0, 0, 0.85);
 
   --background-top-bar: rgb(235, 235, 235);
   --background-top-bar-dark: rgb(212, 212, 212);
+  --background-top-bar-dark-hover: rgb(186, 185, 185);
   --background-reminder: rgb(171, 171, 255);
   --background-alert: rgb(237, 168, 168);
   --background-normal: rgb(244, 231, 169);
+
+  --background-active-task: rgba(33, 83, 220, 0.5);
+  --background-completed-task: rgba(95, 220, 33, 0.5);
+  --background-comming-deadline-task: rgba(235, 161, 14, 0.5);
+  --background-after-deadline-task: rgba(219, 46, 40, 0.5);
+  --background-active-task-dark: rgba(22, 66, 188, 0.633);
+  --background-completed-task-dark: rgba(73, 202, 9, 0.719);
+  --background-comming-deadline-task-dark: rgba(235, 161, 14, 0.767);
+  --background-after-deadline-task-dark: rgba(219, 46, 40, 0.76);
+
+  --background-light-blue: rgb(169, 197, 231);
+  --border-blue: rgb(0, 0, 94);
+
+  --background-light-green: rgb(178, 220, 168);
+  --border-green: rgb(0, 48, 0);;
+
+  --background-light-red: rgb(243, 181, 181);
+  --border-red: rgb(109, 0, 0);;
 
   --transitionTime: 100ms;
 }
@@ -57,7 +79,12 @@ form div:not(
     .remember-me-container,
     .remember-me-checkbox,
     .button-container,
-    .auth-container
+    .auth-container,
+    .top,
+    .bottom,
+    .right,
+    .left,
+    .user
 )
 {
     display: flex;
@@ -100,4 +127,35 @@ textarea::placeholder
 textarea
 {
   resize: none;
+}
+
+
+.pagination
+{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 2em;
+}
+
+.pagination span
+{
+    cursor: pointer;
+}
+
+.pagination .icon
+{
+    background: var(--background-button);
+    border-radius: 7px;
+    padding: 5px 10px;
+    width: fit-content !important;
+    color: #f0f0f0;
+    font-size: 15px;
+}
+
+.pagination span.active
+{
+    font-weight: bold;
+    text-decoration: underline;
 }

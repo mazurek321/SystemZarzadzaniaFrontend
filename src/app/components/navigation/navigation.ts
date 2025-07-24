@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { RouterModule } from '@angular/router';
 
 @Component({
@@ -10,8 +10,11 @@ import { RouterModule } from '@angular/router';
 export class Navigation {
   isHidden = false;
 
+  @Output() hiddenChange = new EventEmitter<boolean>();
+
   toggleMenu()
   {
     this.isHidden =!this.isHidden;
+    this.hiddenChange.emit(this.isHidden);
   }
 }

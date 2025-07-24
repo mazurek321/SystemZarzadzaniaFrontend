@@ -10,6 +10,7 @@
     top: 0;
     left: 0;
     width: 100%;
+    z-index: 1000;
 }
 
 
@@ -30,13 +31,13 @@
     background: white;
     border: 1px solid black;
     box-shadow: 1px 1px 3px black;
-    padding: 5px 10px;
+    padding: 2px 10px;
     border-radius: 25px;
 }
 
 .topBar .searchbar input
 {
-    font-size: 17px;
+    font-size: 15px;
     border: none;
     outline: none;
     background: transparent;
@@ -56,7 +57,7 @@
 
 .topBar .notifications .count
 {
-    background: rgb(205, 7, 7);
+    background: var(--background-close-button);
     width: 20px;
     height: 20px;
     position: absolute;

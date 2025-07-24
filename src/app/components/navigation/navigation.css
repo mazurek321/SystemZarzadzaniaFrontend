@@ -7,7 +7,7 @@ nav
     height: 100vh;
     background: var(--background-navigation);
     box-shadow: 3px 0 5px black;
-    z-index: 1000;
+    z-index: 10000;
 }
 
 nav header 
@@ -46,7 +46,6 @@ nav ul
 nav ul li
 {
     cursor: pointer;
-    position: relative;
     transition: var(--transitionTime) all linear;
     color: #f0f0f0;
 }
@@ -57,6 +56,7 @@ nav ul li a
     align-items: center;
     gap: 10px;
     padding: 15px;
+    position: relative;
 }
 
 nav ul li:hover,
@@ -84,4 +84,27 @@ nav.isHidden h1,
 nav.isHidden ul li span:is(:not(.icon))
 {
     display: none;
+}
+
+nav .message-icon
+{
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+nav .message-count
+{
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    background: var(--background-close-button);
+    width: 20px;
+    height: 20px;
+    padding: 3px;
+    font-size: 9px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }

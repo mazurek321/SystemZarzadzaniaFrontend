@@ -5,14 +5,21 @@ import { RouterModule } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [RouterModule,Navigation, TopBar],
+  imports: [RouterModule, Navigation, TopBar],
   template: `
-    <app-navigation/>
+    <app-navigation (hiddenChange)="onMenuToggle($event)"/>
     <app-top-bar/>
-    <router-outlet></router-outlet>
+
+    <div class="container" [class.collapsed-padding]="isMenuHidden">
+      <router-outlet></router-outlet>
+    </div>
   `,
   styleUrl: './home.css'
 })
 export class Home {
+  isMenuHidden = false;
 
+  onMenuToggle(hidden: boolean) {
+    this.isMenuHidden = hidden;
+  }
 }

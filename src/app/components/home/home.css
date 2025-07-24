@@ -1,5 +1,10 @@
 .container
 {
     width: 100%;
-    padding: 100px 100px 250px 300px;
+    padding: 100px 100px 50px 300px;
+}
+
+.container.collapsed-padding
+{
+    padding: 100px 100px 50px 100px;
 }

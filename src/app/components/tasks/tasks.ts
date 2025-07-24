@@ -8,17 +8,27 @@ import { FormsModule } from '@angular/forms';
   styleUrls: ['../home/home.css', './tasks.css']
 })
 export class Tasks {
+  isSortHidden = true;
   isFilterHidden = true;
   isTaskPanelHidden = true;
+  isSelectUsersHidden = true;
+  isSelectCategoriesHidden = true;
+  isActionsHidden = true;
 
   taskForm = {
-    deadline: this.getTodayDateString()
+    deadline: this.getTomorrowDateString()
   };
 
-  getTodayDateString(): string {
-    return new Date().toISOString().split('T')[0];
-  }
+  getTomorrowDateString(): string {
+    const today = new Date();
+    today.setDate(today.getDate() + 1);
+  return today.toISOString().split('T')[0];
+}
 
+  toggleSort()
+  {
+    this.isSortHidden = !this.isSortHidden;
+  }
   toggleFilter()
   {
     this.isFilterHidden = !this.isFilterHidden;
@@ -26,5 +36,17 @@ export class Tasks {
   toggleTaskPanel()
   {
     this.isTaskPanelHidden = !this.isTaskPanelHidden;
+  }
+  toggleSelectUsers()
+  {
+    this.isSelectUsersHidden = !this.isSelectUsersHidden;
+  }
+  toggleSelectCategories()
+  {
+    this.isSelectCategoriesHidden = !this.isSelectCategoriesHidden;
+  }
+  toggleActions()
+  {
+    this.isActionsHidden = !this.isActionsHidden;
   }
 }

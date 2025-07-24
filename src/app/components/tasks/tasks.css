@@ -43,6 +43,7 @@
 }
 
 
+.sort-container,
 .filter-container
 {
     position: absolute;
@@ -56,15 +57,16 @@
     z-index: 100;
 }
 
+.sort-container h3,
 .filter-container h3
 {
-    margin-bottom: 1em;
     background: var(--background-navigation);
     color: #f0f0f0;
     padding: 20px;
     font-size: small;
 }
 
+.sort-container ul li,
 .filter-container ul li
 {
     padding: 20px;
@@ -73,6 +75,7 @@
     gap: 15px;
 }
 
+.sort-container input[type="checkbox"],
 .filter-container input[type="checkbox"]
 {
     width: 15px;
@@ -95,6 +98,12 @@
   background: var(--background-top-bar-dark);
   padding: 10px;
   border: 1px solid transparent;
+  cursor: pointer;
+}
+
+.task-row:hover td
+{
+    background: var(--background-top-bar-dark-hover);
 }
 
 .task-row:first-child td:first-child {
@@ -113,6 +122,40 @@
   border-bottom-right-radius: 8px;
 }
 
+.task-row.active td
+{
+    background: var(--background-active-task);
+}
+.task-row.active:hover td
+{
+    background: var(--background-active-task-dark);
+}
+
+.task-row.completed td
+{
+    background: var(--background-completed-task);
+}
+.task-row.completed:hover td
+{
+    background: var(--background-completed-task-dark);
+}
+.task-row.comming-deadline td
+{
+    background: var(--background-comming-deadline-task);
+}
+.task-row.comming-deadline:hover td
+{
+    background: var(--background-comming-deadline-task-dark);
+}
+.task-row.after-deadline td
+{
+    background: var(--background-after-deadline-task);
+}
+.task-row.after-deadline:hover td
+{
+    background: var(--background-after-deadline-task-dark);
+}
+
 table
 {
     width: 100%;
@@ -121,7 +164,9 @@ table
 th
 {
     text-align: left;
+    padding: 10px;
 }
+
 
 
 .task-list span.icon
@@ -144,7 +189,8 @@ th
     z-index: 1;
 }
 
-.isFilterHidden
+.isFilterHidden,
+.isSortHidden
 {
     display: none;
 }
@@ -159,10 +205,10 @@ th
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0, 0, 0, 0.8);
+    background: var(--background-cover-content);
     width: 100%;
     height: 100%;
-    z-index: 1000;
+    z-index: 100000;
 }
 
 .add-task-container.isTaskPanelHidden
@@ -176,6 +222,7 @@ th
     padding: 20px;
     border-radius: 10px;
     z-index: 10;
+    width: 27em;
 }
 
 .content .top
@@ -187,7 +234,7 @@ th
 
 .content .top button
 {
-    background: rgb(170, 6, 6);
+    background: var(--background-close-button);
 }
 
 .button-container .submit
@@ -211,4 +258,194 @@ div{
 div label
 {
     position: absolute;
+}
+
+.categories-container,
+.users-container
+{
+    flex-direction: column;
+}
+
+.categories-container .top,
+.users-container .top
+{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.categories-container .top .left,
+.users-container .top .left
+{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.categories-container .top button,
+.users-container .top button
+{
+    background: var(--background-submit-button);
+    padding: 5px 10px;
+}
+
+.categories-container .bottom ul,
+.users-container .bottom ul
+{
+    display: flex;
+    gap:10px;
+    flex-wrap:  wrap;
+    margin: 10px 0;
+    justify-content: center;
+    max-height: 5em;
+    overflow: auto;
+}
+
+.categories-container .bottom ul li,
+.users-container .bottom ul li
+{
+    background: var(--background-light-blue);
+    border: 1px solid var(--border-blue);
+    padding: 5px 10px;
+    border-radius: 7px;
+    font-size: 12px;
+}
+
+.categories-container ul li span,
+.users-container ul li span
+{
+    margin-left: 10px;
+    cursor: pointer;
+}
+
+.categories-container ul li span:hover,
+.users-container ul li span:hover
+{
+    color: var(--border-blue);
+}
+
+
+
+
+
+
+
+.users-selection-container,
+.category-selection-container
+{
+    position: fixed;
+    top: -1em;
+    left: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100vw;
+    height: 100vh;
+    background: var(--background-cover-content);
+    z-index: 1000000;
+}
+
+.users-selection-container.isSelectUsersHidden,
+.category-selection-container.isSelectCategoriesHidden
+{
+    display: none;
+}
+
+.users-selection-container .top button,
+.category-selection-container .top button
+{
+    background: var(--background-close-button);
+}
+
+.users-selection-container .content,
+.category-selection-container .content
+{
+    flex-direction: column;
+    width: 27em;
+}
+
+.users-selection-container .content .bottom,
+.category-selection-container .content .bottom
+{
+    width: 100%;
+}
+
+.users-selection-container .bottom input,
+.category-selection-container .bottom input
+{
+    width: 100%;
+}
+
+.users-selection-container .content ul,
+.category-selection-container .content ul
+{
+    justify-content: left;
+    max-height: 60vh;
+}
+
+.users-selection-container .content ul li,
+.category-selection-container .content ul li
+{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+
+
+.task-row td:last-child
+{
+    position: relative;
+}
+
+
+.actions-container
+{
+    position: absolute;
+    right: 0;
+    top: 2.5em;
+}
+
+.actions-container.isActionsHidden
+{
+    display: none;
+}
+
+.actions-container .content
+{
+    padding: 0;
+    width: fit-content !important;
+}
+
+.actions-container ul li
+{
+    margin: 5px 0;
+    padding: 10px 70px 10px 10px;
+    cursor: pointer;
+    border-radius: 7px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.actions-container ul li:hover
+{
+    background:var(--background-top-bar-dark-hover);
+}
+
+.actions-container ul li:first-child:hover
+{
+    background: var(--background-light-green);
+    color: var(--border-green)
+}
+.actions-container ul li:nth-child(2):hover
+{
+    background: var(--background-light-blue);
+    color: var(--border-blue)
+}
+.actions-container ul li:last-child:hover
+{
+    background: var(--background-light-red);
+    color: var(--border-red)
 }
