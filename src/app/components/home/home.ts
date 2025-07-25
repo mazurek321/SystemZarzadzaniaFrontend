@@ -24,6 +24,7 @@ export class Home {
 
   ngOnInit()
   {
+    console.log(this.authService.isLoggedIn())
     if(!this.authService.isLoggedIn())
       this.router.navigate(["/auth/sign-in"]);
   }

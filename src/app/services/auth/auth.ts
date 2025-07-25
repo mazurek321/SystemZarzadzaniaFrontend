@@ -1,12 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-
-export interface Credentials
-{
-  email: string;
-  password: string;
-}
+import { UsersService } from '../users/users';
 
 export interface RegisterData
 {
@@ -26,18 +21,23 @@ export class AuthService {
   private authUrl = "http://localhost:5259/api/auth";
   private token = new BehaviorSubject<string | null>(null);
 
-  constructor(private http: HttpClient) {}
+  constructor(
+    private http: HttpClient, 
+    public usersService: UsersService
+  ) {}
 
   register(data: RegisterData):Observable<any>
   {
     return this.http.post(`${this.authUrl}/register`, data);
   }
 
-  login(credentials: Credentials): Observable<any>
+  login(email: string, password: string, rememberMe: boolean): Observable<any>
   {
-    return this.http.post(`${this.authUrl}/login`, credentials, {responseType: 'text'}).pipe(
+    const Credentials = {email, password};
+
+    return this.http.post(`${this.authUrl}/login`, Credentials, {responseType: 'text'}).pipe(
       tap(response => {
-        localStorage.setItem('token', response);
+        rememberMe ? localStorage.setItem('token', response) : sessionStorage.setItem('token', response);
         this.token.next(response);
       })
     );
@@ -46,17 +46,25 @@ export class AuthService {
   logout()
   {
     localStorage.removeItem('token');
+    sessionStorage.removeItem('token');
     this.token.next(null);
+    this.usersService.clearCurrentsUserData();
   }
 
   isLoggedIn():boolean
   {
-    return !!localStorage.getItem('token'); 
+    const tokenLocal = localStorage.getItem('token');
+    const tokenSession = sessionStorage.getItem('token');
+
+    return !!tokenLocal || !!tokenSession; 
   }
 
   getToken() : string | null
   {
-    return localStorage.getItem('token');
+    const tokenLocal = localStorage.getItem('token');
+    const tokenSession = sessionStorage.getItem('token');
+
+    return tokenLocal || tokenSession;
   }
 
 }

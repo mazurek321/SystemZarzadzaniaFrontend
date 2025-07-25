@@ -27,14 +27,16 @@
         </div>  
     </div>
     <div class="user">
-        <div class="info" (click) = "toggleUser()">
-            <span>Alan</span>
-            <span>Dąbek</span>
+        <div class="info" (click) = "toggleUserPanel()">
+           <div *ngIf="currentUser$ | async as user">
+                <span>{{ user.name }}</span>
+                <span>{{ user.lastname }}</span>
+            </div>
             <span class="material-symbols-outlined icon">keyboard_arrow_down</span>
         </div>
 
 
-        <div class="cover-content" [class.userIsHidden]="userIsHidden" (click) = "toggleUser()"></div>
+        <div class="cover-content" [class.userIsHidden]="userIsHidden" (click) = "toggleUserPanel()"></div>
         <div class="user-dropdown" [class.userIsHidden]="userIsHidden">
             <h3>User panel</h3>
             <a class="caffel" routerLink="/user">

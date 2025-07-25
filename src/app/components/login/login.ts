@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angula
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from '../../services/auth/auth';
 import { CommonModule } from '@angular/common';
+import { switchMap } from 'rxjs';
+import { UsersService } from '../../services/users/users';
 
 @Component({
   selector: 'app-login',
@@ -19,10 +21,16 @@ export class Login {
 
   loginForm: FormGroup;
   
-  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router, private cd: ChangeDetectorRef){
+  constructor(
+    private fb: FormBuilder, 
+    private auth: AuthService, 
+    private router: Router, 
+    private cd: ChangeDetectorRef,
+  ){
     this.loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
-    password: ['', Validators.required]
+    password: ['', Validators.required],
+    rememberMe: ['']
   });
   }
 
@@ -32,9 +40,13 @@ export class Login {
     this.isError = false;
     this.errorMessage = '';
 
+    const {email, password, rememberMe} = this.loginForm.value;
+
     if(this.loginForm.valid)
       {
-      this.auth.login(this.loginForm.value).subscribe({
+      this.auth.login(email, password, rememberMe).pipe(
+        switchMap(()=>this.auth.usersService.getCurrentUsersData())
+      ).subscribe({
         next: () => {
           this.router.navigate(['/home']); 
           this.isSending = false; 
