@@ -11,23 +11,23 @@
             <div class="cover-content" (click)="toggleSort()" [class.isSortHidden]="isSortHidden"></div>
             <h3>Sort by</h3>
             <ul>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>Title</span>
                 </li>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>Description</span>
                 </li>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>Deadline</span>
                 </li>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>Start date</span>
                 </li>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>End date</span>
                 </li>
@@ -39,23 +39,23 @@
             <div class="cover-content" (click)="toggleFilter()" [class.isFilterHidden]="isFilterHidden"></div>
             <h3>Filter</h3>
             <ul>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>Started tasks</span>
                 </li>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>Ended tasks</span>
                 </li>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>Not started tasks</span>
                 </li>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>Comming deadline</span>
                 </li>
-                <li>
+                <li (click)="toggleCheckbox($event)">
                     <input type="checkbox" value="title">
                     <span>After deadline</span>
                 </li>

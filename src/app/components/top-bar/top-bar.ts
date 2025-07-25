@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth/auth';
 
 @Component({
   selector: 'app-top-bar',
@@ -8,6 +9,14 @@ import { RouterModule } from '@angular/router';
   styleUrl: './top-bar.css'
 })
 export class TopBar {
+
+  constructor(private authService: AuthService, private router: Router) {}
+
+  logout()
+  {
+    this.authService.logout();
+    this.router.navigate(["auth/sign-in"]);
+  }
 
   notifIsHidden = true;
   userIsHidden = true;

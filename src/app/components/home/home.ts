@@ -1,7 +1,8 @@
 import { Component } from '@angular/core';
 import { Navigation } from '../navigation/navigation';
 import { TopBar } from '../top-bar/top-bar';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
+import { AuthService } from '../../services/auth/auth';
 
 @Component({
   selector: 'app-home',
@@ -18,6 +19,14 @@ import { RouterModule } from '@angular/router';
 })
 export class Home {
   isMenuHidden = false;
+
+  constructor(private authService: AuthService, private router: Router){}
+
+  ngOnInit()
+  {
+    if(!this.authService.isLoggedIn())
+      this.router.navigate(["/auth/sign-in"]);
+  }
 
   onMenuToggle(hidden: boolean) {
     this.isMenuHidden = hidden;

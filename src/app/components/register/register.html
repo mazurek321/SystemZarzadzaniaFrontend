@@ -7,35 +7,47 @@
             </div>
         </div>
 
-        <form>
+        <form [formGroup]="registerForm" (ngSubmit)="submit()">
             <div class="name-container">
                  <span class="material-symbols-outlined icon">badge</span>
-                 <input type="text" placeholder="Name">
+                 <input type="text" placeholder="Name" formControlName="name" required>
             </div>
 
             <div class="name-container">
                  <span class="material-symbols-outlined icon">person</span>
-                 <input type="text" placeholder="Lastname">
+                 <input type="text" placeholder="Lastname" formControlName="lastname" required>
             </div>
             
             <div class="name-container">
                  <span class="material-symbols-outlined icon">email</span>
-                 <input type="text" placeholder="Email">
+                 <input type="text" placeholder="Email" formControlName="email" required>
             </div>
 
             <div class="password-container">
                 <span class="material-symbols-outlined icon">lock</span>
-                <input type="password" placeholder="Password">
+                <input type="password" placeholder="Password" formControlName="password" required>
             </div>
             <div class="password-container">
                 <span class="material-symbols-outlined icon">lock_reset</span>
-                <input type="password" placeholder="Confirm password">
+                <input type="password" placeholder="Confirm password" formControlName="confirmPassword"  required>
+            </div>
+            <div class="phone-container">
+                <span class="material-symbols-outlined icon">phone</span>
+                <input type="password" placeholder="Phone*" formControlName="phone">
             </div>
 
-            <!-- <p>d</p> -->
+            <p *ngIf="isError" class="error-message">{{errorMessage}}</p>
             
             <div class="button-container">
-                <button>Sign up</button>
+                <button [disabled]="isSending" [class.isSending]="isSending">
+                    <ng-container *ngIf="!isSending; else loadingTemplate">
+                        Sign up
+                    </ng-container>
+
+                    <ng-template #loadingTemplate>
+                        <div class="spinner"></div>
+                    </ng-template>
+                </button>
             </div>
 
             <div class="auth-container">

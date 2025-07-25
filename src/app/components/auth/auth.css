@@ -67,9 +67,30 @@ button
     font-weight: bold;
     border: none;
     outline: none;
-    margin: 2em 0;
+    margin: 1em 0;
     border-radius: 7px;
     cursor: pointer;
+}
+
+button.isSending
+{
+    padding: 10px 50px;
+}
+
+.spinner {
+    margin: auto;
+    border: 3px solid #f3f3f3; 
+    background: transparent;
+    border-top: 3px solid #3498db;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
 
 .auth-container, p
@@ -78,7 +99,7 @@ button
 }
 
 p{
-    margin-top: 1em;
+    color: red;
 }
 
 a{
@@ -89,3 +110,4 @@ a:hover
 {
     text-decoration: underline;
 }
+

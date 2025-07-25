@@ -88,7 +88,6 @@
     width: 300px;
     left: -140px;
     top: 35px;
-    z-index: 10000;
 }
  
 ::-webkit-scrollbar {

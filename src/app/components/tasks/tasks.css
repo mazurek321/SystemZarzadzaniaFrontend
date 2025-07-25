@@ -42,6 +42,12 @@
     font-size: 16px;
 }
 
+.right .icon,
+.right button
+{
+    z-index: 100;
+}
+
 
 .sort-container,
 .filter-container
@@ -53,7 +59,7 @@
     top: 40px;
     border:1px solid black;
     border-radius: 7px;
-    width: 200px;
+    width: 275px;
     z-index: 100;
 }
 
@@ -73,6 +79,13 @@
     display: flex;
     align-items: center;
     gap: 15px;
+    cursor: pointer;
+}
+
+.sort-container ul li:hover,
+.filter-container ul li:hover
+{
+    background: var(--background-top-bar-dark-hover);
 }
 
 .sort-container input[type="checkbox"],
@@ -186,7 +199,7 @@ th
     left:0;
     background: transparent;
     content: '';
-    z-index: 1;
+    z-index: -1;
 }
 
 .isFilterHidden,
