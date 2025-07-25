@@ -1,0 +1,20 @@
+form
+{
+    align-items: stretch;
+    justify-content: stretch;
+}
+
+form span
+{
+    width: 8em;
+}
+
+form div
+{
+    width: fit-content;
+}
+
+form div input
+{
+    width: 100%;
+}

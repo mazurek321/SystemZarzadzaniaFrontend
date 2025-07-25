@@ -1,8 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router, RouterModule } from '@angular/router';
 import { AuthService } from '../../services/auth/auth';
-import { UserDto, UsersService } from '../../services/users/users';
-import { Observable } from 'rxjs';
+import { UserDto } from '../../services/users/users';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -11,21 +10,13 @@ import { CommonModule } from '@angular/common';
   templateUrl: './top-bar.html',
   styleUrl: './top-bar.css'
 })
-export class TopBar implements OnInit{
-
-  currentUser$!: Observable<UserDto | null>;
+export class TopBar{
+  @Input() user: UserDto | null = null;
 
   constructor(
     private authService: AuthService, 
-    private router: Router,
-    private usersService: UsersService
+    private router: Router
   ) {}
-
-  ngOnInit()
-  {
-    this.currentUser$ = this.usersService.currentUser$;
-  }
-  
 
   logout()
   {

@@ -1,1 +1,22 @@
-<p>userpage works!</p>
+
+<div class="user-info">
+    <h3>Personal information</h3>
+    <form [formGroup]="userForm">
+        <div class="name-container">
+            <span>Name</span>
+            <input type="text" formControlName="name">
+        </div>
+        <div class="lastname-container">
+            <span>Lastname</span>
+            <input type="text" formControlName="lastname">
+        </div>
+        <div class="email-container">
+            <span>Email</span>
+            <input formControlName="email" type="email" [disabled]="isDisabled">
+        </div>
+        <div class="phone-container">
+            <span>Phone</span>
+            <input type="text" formControlName="phone">
+        </div>
+    </form>
+</div>
