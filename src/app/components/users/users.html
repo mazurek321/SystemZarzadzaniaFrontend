@@ -1,37 +1,12 @@
 <div class="users-container">
-    <div class="user">
-        <div class="top">
-            <div class="left">
-                <div class="name">
-                    <span>Username</span>
-                    <span>Lastname</span>
-                </div>
-                <div class="email">
-                    <span>user@example.com</span>
-                </div>
-            </div>
-        </div>
+  <app-user-selector
+    [pageSize]="4"
+    [styleMode]="'default'"
+    (userSelected)="goToUser($event)"
+    (loadingChange)="isLoading = $event"
+    (errorChange)="isError = $event">
+  </app-user-selector>
 
-        <div class="bottom">
-            <div class="action">
-                <span class="material-symbols-outlined">mail</span>
-                <span>Send message</span>
-            </div>
-            <div class="action">
-                <span class="material-symbols-outlined">assignment_add</span>
-                <span>Assign task</span>
-            </div>
-        </div>
-    </div>
-
-
-     <div class="pagination">
-        <span class="material-symbols-outlined icon">arrow_back</span>
-        <span class="active">1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>...</span>
-        <span>11</span>
-        <span class="material-symbols-outlined icon">arrow_forward</span>
-    </div>
+  <div *ngIf="isLoading" class="loading">Loading...</div>
+  <div *ngIf="isError" class="error">Something went wrong.</div>
 </div>

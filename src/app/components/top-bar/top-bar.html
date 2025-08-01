@@ -7,27 +7,30 @@
     </div>
     <div class="notifications">
         <span class="material-symbols-outlined icon" (click)="toggleNotif()">notifications</span>
-        <div class="count">9</div>
+        <div class="count" *ngIf="unreadCount > 0">
+            {{ unreadCount < 99 ? unreadCount : '99+' }}
+        </div>
 
         <div class="cover-content" [class.notifIsHidden]="notifIsHidden" (click) = "toggleNotif()"></div>
         <div class="notifications-dropdown" [class.notifIsHidden]="notifIsHidden">
             <h3>Notifications</h3>
-            <div class="notifications-list">
-                <div class="notification reminder">
+            <div class="notifications-list" *ngIf="notifications.length > 0">
+                <div class="notification" [ngClass]="notif.type" *ngFor="let notif of notifications">
                     <h4>
-                        <span>Reminder</span>
-                        <span>2025-07-21 18:40</span>
+                        <span>{{ notif.type }}</span>
+                        <span>{{ notif.receivedAt | date:'yyyy-MM-dd HH:mm:ss' }}</span>
                     </h4>
-                    <p>The deadline of task ... is comming.</p>
-                    <div class="notif-button">
-                        <button>Delete</button>
-                    </div>
+                    <p> {{ notif.message }} </p>
                 </div>
+            </div>
+            <div class="notifications-list" *ngIf="notifications.length === 0">
+                <p class="no-notif">You dont have notificiations.</p>
             </div>
         </div>  
     </div>
     <div class="user">
         <div class="info" (click) = "toggleUserPanel()">
+            <img src="assets/images/userIcon.jpg">
             <span *ngIf="user">{{ user.name }}</span>
             <span *ngIf="user">{{ user.lastname }}</span>
             <span class="material-symbols-outlined icon">keyboard_arrow_down</span>
@@ -37,7 +40,7 @@
         <div class="cover-content" [class.userIsHidden]="userIsHidden" (click) = "toggleUserPanel()"></div>
         <div class="user-dropdown" [class.userIsHidden]="userIsHidden">
             <h3>User panel</h3>
-            <a class="caffel" routerLink="/home/user" (click) = "toggleUserPanel()">
+            <a class="caffel" routerLink="/home/user/me" (click) = "toggleUserPanel()">
                 <span class="material-symbols-outlined icon">settings</span>
                 <span>Settings</span>
             </a>

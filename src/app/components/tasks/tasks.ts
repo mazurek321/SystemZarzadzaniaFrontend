@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { TaskDto, Taskservice } from '../../services/tasks/taskservice';
+import { UserDto } from '../../services/users/users';
 
 @Component({
   selector: 'app-tasks',
@@ -10,8 +12,16 @@ import { ActivatedRoute, Router } from '@angular/router';
   styleUrls: ['../home/home.css', './tasks.css']
 })
 
-export class Tasks {
+export class Tasks implements OnInit{
+  user: UserDto | null = null;
 
+  tasks: TaskDto[] = []; 
+  pagedTasks: TaskDto[] = []; 
+
+  showMyTasks = true;
+
+  currentPage = 1;
+  itemsPerPage = 5;
 
   isSortHidden = true;
   isFilterHidden = true;
@@ -20,15 +30,61 @@ export class Tasks {
   isSelectCategoriesHidden = true;
   isActionsHidden = true;
 
+  constructor(
+    private taskService: Taskservice,
+    private cd: ChangeDetectorRef
+  ){}
+
+  ngOnInit()
+  {
+    this.loadTasks();
+  }
+
   taskForm = {
     deadline: this.getTomorrowDateString()
   };
+
+  loadTasks() {
+    let query$;
+
+    if(this.user != null && this.showMyTasks) query$ = this.taskService.browseTasks(this.currentPage, this.itemsPerPage, this.user.id);
+    else query$ = this.taskService.browseTasks(this.currentPage, this.itemsPerPage);
+    query$.subscribe({
+      next: (data=>{
+        this.tasks = data;
+        this.updatePagedTasks();
+        this.cd.detectChanges();
+      }),
+      error: (err=>{
+        console.log("Error fetching tasks: ", err);
+        this.cd.detectChanges();
+      })
+    });
+  }
+
+  updatePagedTasks() {
+    const start = (this.currentPage - 1) * this.itemsPerPage;
+    const end = start + this.itemsPerPage;
+    this.pagedTasks = this.tasks.slice(start, end);
+  }
+
+  goToPage(page: number) {
+    this.currentPage = page;
+    this.updatePagedTasks();
+  }
+
 
   getTomorrowDateString(): string {
     const today = new Date();
     today.setDate(today.getDate() + 1);
   return today.toISOString().split('T')[0];
 }
+
+  setShowTasks(value: boolean)
+  {
+    this.showMyTasks = value;
+    this.loadTasks();
+  }
 
   toggleSort()
   {

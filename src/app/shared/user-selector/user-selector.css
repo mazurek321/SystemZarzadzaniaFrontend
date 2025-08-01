@@ -1,0 +1,142 @@
+.user
+{
+    background: var(--background-top-bar);
+    border-radius: 7px;
+    padding: 5px 5px 5px 30px;
+    border: 1px solid var(--background-top-bar-dark);
+    margin-bottom: 1em;
+    box-shadow: 1px 1px 1px black;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.user .top{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    font-weight: bold;
+    justify-content: space-between;
+}
+
+.user .left
+{
+    display: flex;
+    align-items: stretch;
+}
+
+.user .top .left .name
+{
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.user .info
+{
+    display: flex;
+    flex-direction: column;
+}
+
+
+span.activeUser
+{
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: green;
+    margin: 0 10px;
+}
+
+
+.user img
+{
+    width: 3em;
+    height: 3em;
+    margin-right: 1em;
+    border-radius: 50%;
+    border: 1px solid silver;
+}
+
+.user .email
+{
+    margin-top:  auto;
+}
+
+.user .top .right span
+{
+    font-size: small;
+    font-weight: normal;
+}
+
+.user span.admin
+{
+    color: red;
+}
+
+.email
+{
+    font-size: small;
+    font-weight: normal;
+}
+
+
+.bottom
+{
+    display: flex;
+}
+
+
+.bottom .action
+{
+    cursor: pointer;
+    color: grey;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 10px; 
+    border: 1px solid transparent;
+    border-radius: 7px;
+}
+
+.bottom .action:hover
+{
+    border: 1px solid grey;
+    background: var(--background-top-bar-dark);
+    color: black;
+}
+
+.bottom span:first-child{
+    font-size: 30px;
+}
+.bottom span:nth-child(2){
+    font-size: 12px;
+    opacity: 0;
+}
+
+.bottom .action:hover span:nth-child(2)
+{
+    opacity: 1;
+}
+
+.pagination button
+{
+    border: none;
+}
+
+button.active
+{
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.action span
+{
+    text-align: center;
+}
+
+
+a{
+    cursor: pointer;
+}

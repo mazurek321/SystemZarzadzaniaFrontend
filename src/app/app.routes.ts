@@ -28,7 +28,8 @@ export const routes: Routes = [
             {path: 'dashboard', component: Dashboard},
             {path: 'tasks', component: Tasks},
             {path: 'users', component: Users},
-            {path: 'user', component: Userpage}
+            {path: 'user/me', component: Userpage},
+            {path: 'users/:id', component: Userpage}
         ]
     },
 ];

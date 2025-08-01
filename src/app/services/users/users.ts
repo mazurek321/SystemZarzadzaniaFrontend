@@ -1,8 +1,7 @@
   import { HttpClient } from '@angular/common/http';
   import { Injectable } from '@angular/core';
   import { BehaviorSubject, Observable, tap } from 'rxjs';
-
-  export interface TaskDto{}
+import { TaskDto } from '../tasks/taskservice';
 
   export interface UserDto
   {
@@ -14,9 +13,22 @@
     isActive: boolean,
     lastActive: string,
     role: string,
+    expiresAt: string,
     createdAt: string,
     updatedAt: string,
     tasks: TaskDto[]
+  }
+
+  export interface UserUpdateDto {
+    name: string;
+    lastname: string;
+    email: string;
+    phone: string;
+  }
+
+  export interface PagedResult<T> {
+    items: T[];
+    totalCount: number;
   }
 
   @Injectable({
@@ -51,6 +63,15 @@
     getUser(id: string): Observable<UserDto>
     {
       return this.http.get<UserDto>(`${this.userUrl}?userId=${id}`);
+    }
+
+    browseUsers(pageNumber = 1, pageSize = 25): Observable<PagedResult<UserDto>> {
+      return this.http.get<PagedResult<UserDto>>(`${this.userUrl}/browse?pageNumber=${pageNumber}&pageSize=${pageSize}`);
+    }
+
+    updateUser(userUpdate: UserUpdateDto) : Observable<UserDto>
+    {
+      return this.http.put<UserDto>(`${this.userUrl}`, userUpdate);
     }
     
   }

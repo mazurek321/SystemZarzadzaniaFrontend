@@ -1,22 +1,62 @@
 
 <div class="user-info">
     <h3>Personal information</h3>
-    <form [formGroup]="userForm">
-        <div class="name-container">
-            <span>Name</span>
-            <input type="text" formControlName="name">
+    <div class="view">
+        <div class="image-container">
+           <div class="image">
+                <div class="top">
+                    <img src="assets/images/userIcon.jpg" alt="user icon">
+                </div>
+                <div class="bottom" *ngIf="isOwnProfile">
+                    <span class="material-symbols-outlined icon">photo_camera</span>
+                </div>
+           </div>
+           <div class="small-info">
+                <span *ngIf="user && user.isActive" class="activeUser">Active</span>
+                <span *ngIf="user">Last update <br/> {{ user.updatedAt | date: 'yyyy-MM-dd HH:mm' }}</span>
+           </div>
         </div>
-        <div class="lastname-container">
-            <span>Lastname</span>
-            <input type="text" formControlName="lastname">
+        <div class="form">
+            <form [formGroup]="userForm">
+                <div class="name-container">
+                    <span>Name</span>
+                    <input type="text" formControlName="name">
+                </div>
+                <div class="lastname-container">
+                    <span>Lastname</span>
+                    <input type="text" formControlName="lastname">
+                </div>
+                <div class="email-container">
+                    <span>Email</span>
+                    <input formControlName="email" type="email">
+                </div>
+                <div class="phone-container">
+                    <span>Phone</span>
+                    <input type="text" formControlName="phone">
+                </div>
+                <div class="role-container">
+                    <span>Role</span>
+                    <span *ngIf="user" class="info" [ngClass]="user.role">{{ user.role }}</span>
+                </div>
+                <div class="expires-at-container" *ngIf="user && user.expiresAt">
+                    <span>Expires at</span>
+                    <span *ngIf="user" class="info">{{ user.expiresAt }}</span>
+                </div>
+
+                <div class="button-container" *ngIf="isOwnProfile">
+                    <button (click)="isDisabled ? toggleEditUserInfo() : saveUser()" [class.isDisabled]="isDisabled">
+                        <span class="material-symbols-outlined icon">
+                        {{ isDisabled ? 'edit' : 'save' }}
+                        </span>
+                        {{ isDisabled ? "Edit" : "Save" }}
+                    </button>
+
+                    <button *ngIf="!isDisabled" class="cancel" (click)="cancelEdit()">
+                        <span class="material-symbols-outlined icon">cancel</span>
+                        Cancel
+                    </button>
+                    </div>
+            </form>
         </div>
-        <div class="email-container">
-            <span>Email</span>
-            <input formControlName="email" type="email" [disabled]="isDisabled">
-        </div>
-        <div class="phone-container">
-            <span>Phone</span>
-            <input type="text" formControlName="phone">
-        </div>
-    </form>
+    </div>
 </div>

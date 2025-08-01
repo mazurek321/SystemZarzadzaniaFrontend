@@ -5,6 +5,7 @@ import { AuthService } from '../../services/auth/auth';
 import { CommonModule } from '@angular/common';
 import { switchMap } from 'rxjs';
 import { UsersService } from '../../services/users/users';
+import { NotificationService } from '../../services/notifications/notification-service';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class Login {
     private auth: AuthService, 
     private router: Router, 
     private cd: ChangeDetectorRef,
+    private notificationService: NotificationService
   ){
     this.loginForm = this.fb.group({
     email: ['', [Validators.required, Validators.email]],
@@ -47,7 +49,8 @@ export class Login {
       this.auth.login(email, password, rememberMe).pipe(
         switchMap(()=>this.auth.usersService.getCurrentUsersData())
       ).subscribe({
-        next: () => {
+        next: (user) => {
+          this.notificationService.connect(user);
           this.router.navigate(['/home']); 
           this.isSending = false; 
           this.isError = false;
@@ -63,7 +66,6 @@ export class Login {
           }
 
           this.cd.detectChanges();
-
         }
       });
     }

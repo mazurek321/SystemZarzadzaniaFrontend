@@ -99,7 +99,8 @@ form div:not(
 
 input,
 textarea,
-select
+select,
+form span.info
 {
     font-size: 16px;
     padding: 7px;
@@ -110,7 +111,8 @@ input[type='email'],
 input[type='password'],
 input[type='date'],
 textarea,
-select
+select,
+form span.info
 {
     width: 20em;
     background: transparent;
@@ -159,4 +161,27 @@ textarea
 {
     font-weight: bold;
     text-decoration: underline;
+}
+
+
+button
+{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+button.update
+{
+    background: var(--background-light-blue);
+    border: 1px solid var(--border-blue);
+    color: var(--border-blue);
+}
+
+button.delete
+{
+    background: var(--background-light-red);
+    border: 1px solid var(--border-red);
+    color: var(--border-red);
 }

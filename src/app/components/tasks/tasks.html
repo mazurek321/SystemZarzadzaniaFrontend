@@ -1,7 +1,7 @@
 <div class="panel">
     <div class="left">
-        <button class="active">My tasks</button>
-        <button>All tasks</button>
+        <button [class.active]="showMyTasks" (click)="setShowTasks(true)">My tasks</button>
+        <button [class.active]="!showMyTasks" (click)="setShowTasks(false)">All tasks</button>
         </div>
     <div class="right">
 
@@ -12,7 +12,7 @@
             <h3>Sort by</h3>
             <ul>
                 <li (click)="toggleCheckbox($event)">
-                    <input type="checkbox" value="title">
+                    <input type="checkbox" value="title ">
                     <span>Title</span>
                 </li>
                 <li (click)="toggleCheckbox($event)">
@@ -193,7 +193,16 @@
 
     </div>
 </div>
-<div class="task-list">
+
+<div class="task-list" *ngIf="tasks && tasks.length === 0 && showMyTasks">
+    You don't have any tasks.
+</div>
+<div class="task-list" *ngIf="tasks && tasks.length === 0 && !showMyTasks">
+    There are no tasks to show.
+</div>
+
+
+<div class="task-list" *ngIf="tasks && tasks.length > 0">
 
     <table>
         <tr>
@@ -207,146 +216,14 @@
             <th>Actions</th>
         </tr>
         <tbody>
-            <tr class="task-row active">
-                <td>Web dev</td>
-                <td>Create website with REST API</td>
-                <td>Low</td>
-                <td>2025-07-23</td>
-                <td>2025-07-23</td>
-                <td>-</td>
-                <td>mazurek321.93@wp.pl</td>
-                <td>
-                    <span class="material-symbols-outlined icon" (click)="toggleActions()">more_vert</span>
-                    <div class="actions-container" [class.isActionsHidden] = "isActionsHidden">
-                        <div class="cover-content" (click)="toggleActions()"></div>
-                        <div class="content">
-                            <ul>
-                                <li> <span class="material-symbols-outlined">check_circle</span>Complete</li>
-                                <li> <span class="material-symbols-outlined">update</span>Edit</li>
-                                <li> <span class="material-symbols-outlined">delete</span>Delete</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="task-row completed">
-                <td>Web dev</td>
-                <td>Create website with REST API</td>
-                <td>Low</td>
-                <td>2025-07-23</td>
-                <td>2025-07-23</td>
-                <td>-</td>
-                <td>mazurek321.93@wp.pl</td>
-                <td>
-                    <span class="material-symbols-outlined icon" (click)="toggleActions()">more_vert</span>
-                    <div class="actions-container" [class.isActionsHidden] = "isActionsHidden">
-                        <div class="cover-content" (click)="toggleActions()"></div>
-                        <div class="content">
-                            <ul>
-                                <li> <span class="material-symbols-outlined">check_circle</span>Complete</li>
-                                <li> <span class="material-symbols-outlined">update</span>Edit</li>
-                                <li> <span class="material-symbols-outlined">delete</span>Delete</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="task-row comming-deadline">
-                <td>Web dev</td>
-                <td>Create website with REST API</td>
-                <td>Low</td>
-                <td>2025-07-23</td>
-                <td>2025-07-23</td>
-                <td>-</td>
-                <td>mazurek321.93@wp.pl</td>
-                <td>
-                    <span class="material-symbols-outlined icon" (click)="toggleActions()">more_vert</span>
-                    <div class="actions-container" [class.isActionsHidden] = "isActionsHidden">
-                        <div class="cover-content" (click)="toggleActions()"></div>
-                        <div class="content">
-                            <ul>
-                                <li> <span class="material-symbols-outlined">check_circle</span>Complete</li>
-                                <li> <span class="material-symbols-outlined">update</span>Edit</li>
-                                <li> <span class="material-symbols-outlined">delete</span>Delete</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="task-row">
-                <td>Web dev</td>
-                <td>Create website with REST API</td>
-                <td>Low</td>
-                <td>2025-07-23</td>
-                <td>2025-07-23</td>
-                <td>-</td>
-                <td>mazurek321.93@wp.pl</td>
-                <td>
-                    <span class="material-symbols-outlined icon" (click)="toggleActions()">more_vert</span>
-                    <div class="actions-container" [class.isActionsHidden] = "isActionsHidden">
-                        <div class="cover-content" (click)="toggleActions()"></div>
-                        <div class="content">
-                            <ul>
-                                <li> <span class="material-symbols-outlined">check_circle</span>Complete</li>
-                                <li> <span class="material-symbols-outlined">update</span>Edit</li>
-                                <li> <span class="material-symbols-outlined">delete</span>Delete</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="task-row">
-                <td>Web dev</td>
-                <td>Create website with REST API</td>
-                <td>Low</td>
-                <td>2025-07-23</td>
-                <td>2025-07-23</td>
-                <td>-</td>
-                <td>mazurek321.93@wp.pl</td>
-                <td>
-                    <span class="material-symbols-outlined icon" (click)="toggleActions()">more_vert</span>
-                    <div class="actions-container" [class.isActionsHidden] = "isActionsHidden">
-                        <div class="cover-content" (click)="toggleActions()"></div>
-                        <div class="content">
-                            <ul>
-                                <li> <span class="material-symbols-outlined">check_circle</span>Complete</li>
-                                <li> <span class="material-symbols-outlined">update</span>Edit</li>
-                                <li> <span class="material-symbols-outlined">delete</span>Delete</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            <tr class="task-row after-deadline">
-                <td>Web dev</td>
-                <td>Create website with REST API</td>
-                <td>Low</td>
-                <td>2025-07-23</td>
-                <td>2025-07-23</td>
-                <td>-</td>
-                <td>mazurek321.93@wp.pl</td>
-                <td>
-                    <span class="material-symbols-outlined icon" (click)="toggleActions()">more_vert</span>
-                    <div class="actions-container" [class.isActionsHidden] = "isActionsHidden">
-                        <div class="cover-content" (click)="toggleActions()"></div>
-                        <div class="content">
-                            <ul>
-                                <li> <span class="material-symbols-outlined">check_circle</span>Complete</li>
-                                <li> <span class="material-symbols-outlined">update</span>Edit</li>
-                                <li> <span class="material-symbols-outlined">delete</span>Delete</li>
-                            </ul>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-             <tr class="task-row">
-                <td>Web dev</td>
-                <td>Create website with REST API</td>
-                <td>Low</td>
-                <td>2025-07-23</td>
-                <td>2025-07-23</td>
-                <td>-</td>
-                <td>mazurek321.93@wp.pl</td>
+            <tr class="task-row" [ngClass]="task.status" *ngFor="let task of tasks">
+                <td>{{task.title}}</td>
+                <td>{{task.description}}</td>
+                <td>{{task.priority}}</td>
+                <td>{{task.deadline | date: 'yyyy-MM-dd'}}</td>
+                <td>{{task.startDate | date: 'yyyy-MM-dd'}}</td>
+                <td>{{task.endDate | date: 'yyyy-MM-dd'}}</td>
+                <td>{{task.createdBy}}</td>
                 <td>
                     <span class="material-symbols-outlined icon" (click)="toggleActions()">more_vert</span>
                     <div class="actions-container" [class.isActionsHidden] = "isActionsHidden">

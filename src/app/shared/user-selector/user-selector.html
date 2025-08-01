@@ -1,0 +1,48 @@
+<div class="users-container" *ngIf="!error && !loading && styleMode==='default'">
+    <a class="user" *ngFor="let user of users" [routerLink]="['/home/users', user.id]">
+        <div class="top">
+            <div class="left">
+                <img src="assets/images/userIcon.jpg" alt="">
+                <div class="info">
+                    <div class="name">
+                        <span>{{user.name}}</span>
+                        <span>{{user.lastname}}</span>
+                        <span *ngIf="user.isActive" class="activeUser"></span>
+                    </div>
+                    <div class="email">
+                        <span>{{user.email}}</span>
+                    </div>    
+                </div>
+            </div>
+        </div>
+
+        <div class="bottom">
+            <div class="action">
+                <span class="material-symbols-outlined">mail</span>
+                <span>Send message</span>
+            </div>
+            <div class="action">
+                <span class="material-symbols-outlined">assignment_add</span>
+                <span>Assign task</span>
+            </div>
+        </div>
+    </a>
+</div>
+
+
+<div class="pagination">
+        <button  (click)="prevPage()" [disabled]="currentPage === 1">
+            <span class="material-symbols-outlined icon">arrow_back</span>
+        </button>
+        
+          <button 
+            *ngFor="let page of visiblePages" 
+            [class.active]="page === currentPage"
+            (click)="goToPage(page)">
+            {{ page }}
+        </button>
+
+        <button (click)="nextPage()" [disabled]="currentPage === totalPages">
+            <span class="material-symbols-outlined icon">arrow_forward</span>
+        </button>
+    </div>

@@ -17,6 +17,11 @@
     color: #f0f0f0;
 }
 
+.left
+{
+    display: flex;
+}
+
 .left button
 {
     opacity: 0.5;
@@ -135,36 +140,36 @@
   border-bottom-right-radius: 8px;
 }
 
-.task-row.active td
+.task-row.InProgress td
 {
     background: var(--background-active-task);
 }
-.task-row.active:hover td
+.task-row.InProgress:hover td
 {
     background: var(--background-active-task-dark);
 }
 
-.task-row.completed td
+.task-row.Done td
 {
     background: var(--background-completed-task);
 }
-.task-row.completed:hover td
+.task-row.Done:hover td
 {
     background: var(--background-completed-task-dark);
 }
-.task-row.comming-deadline td
+.task-row.Almostdue td
 {
     background: var(--background-comming-deadline-task);
 }
-.task-row.comming-deadline:hover td
+.task-row.Almostdue:hover td
 {
     background: var(--background-comming-deadline-task-dark);
 }
-.task-row.after-deadline td
+.task-row.Overdue td
 {
     background: var(--background-after-deadline-task);
 }
-.task-row.after-deadline:hover td
+.task-row.Overdue:hover td
 {
     background: var(--background-after-deadline-task-dark);
 }
