@@ -1,7 +1,7 @@
 <div class="panel">
     <div class="left">
-        <button [class.active]="showMyTasks" (click)="setShowTasks(true)">My tasks</button>
-        <button [class.active]="!showMyTasks" (click)="setShowTasks(false)">All tasks</button>
+        <button [class.active]="showMyTasks" (click)="setShowMyTasks(true)">My tasks</button>
+        <button [class.active]="!showMyTasks" (click)="setShowMyTasks(false)">All tasks</button>
         </div>
     <div class="right">
 
@@ -219,18 +219,20 @@
             <tr class="task-row" [ngClass]="task.status" *ngFor="let task of tasks">
                 <td>{{task.title}}</td>
                 <td>{{task.description}}</td>
-                <td>{{task.priority}}</td>
+                <td>{{task.priority | priorityLabel}}</td>
                 <td>{{task.deadline | date: 'yyyy-MM-dd'}}</td>
                 <td>{{task.startDate | date: 'yyyy-MM-dd'}}</td>
                 <td>{{task.endDate | date: 'yyyy-MM-dd'}}</td>
-                <td>{{task.createdBy}}</td>
+                <td>{{task.createdByUser?.email}}</td>
                 <td>
-                    <span class="material-symbols-outlined icon" (click)="toggleActions()">more_vert</span>
-                    <div class="actions-container" [class.isActionsHidden] = "isActionsHidden">
-                        <div class="cover-content" (click)="toggleActions()"></div>
+                    <span class="material-symbols-outlined icon" (click)="toggleActions(task.id)">more_vert</span>
+                    <div class="actions-container" [class.isActionsHidden]="visibleActionsTaskId !== task.id">
+                        <div class="cover-content" (click)="toggleActions(task.id)"></div>
                         <div class="content">
                             <ul>
-                                <li> <span class="material-symbols-outlined">check_circle</span>Complete</li>
+                                <li *ngIf="!task.startDate && !task.endDate" (click)="startTask(task)"> <span class="material-symbols-outlined">play_circle</span>Start</li>
+                                <li *ngIf="task.startDate && !task.endDate" (click)="endTask(task)"> <span class="material-symbols-outlined">check_circle</span>Complete</li>
+                                <li *ngIf="task.startDate && task.endDate" (click)="startTask(task)"> <span class="material-symbols-outlined">redo</span>Resume</li>
                                 <li> <span class="material-symbols-outlined">update</span>Edit</li>
                                 <li> <span class="material-symbols-outlined">delete</span>Delete</li>
                             </ul>
@@ -243,13 +245,25 @@
     </table>
 
     <div class="pagination">
-        <span class="material-symbols-outlined icon">arrow_back</span>
-        <span class="active">1</span>
-        <span>2</span>
-        <span>3</span>
-        <span>...</span>
-        <span>11</span>
-        <span class="material-symbols-outlined icon">arrow_forward</span>
-    </div>
+    <span
+        class="material-symbols-outlined icon"
+        (click)="prevPage()"
+        [class.disabled]="currentPage === 1"
+    >arrow_back</span>
 
+    <span 
+        *ngFor="let page of visiblePages" 
+        (click)="goToPage(page)"
+        [class.active]="page === currentPage"
+        class="page-number"
+    >
+        {{ page }}
+    </span>
+
+    <span
+        class="material-symbols-outlined icon"
+        (click)="nextPage()"
+        [class.disabled]="currentPage === totalPages"
+    >arrow_forward</span>
+    </div>
 </div>

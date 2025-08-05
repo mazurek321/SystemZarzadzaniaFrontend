@@ -1,5 +1,5 @@
-import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { PagedResult, UserDto, UsersService } from '../../services/users/users';
+import { Component } from '@angular/core';
+import { UserDto } from '../../services/users/users';
 import { CommonModule } from '@angular/common';
 import { Router, RouterModule } from '@angular/router';
 import { UserSelector } from '../../shared/user-selector/user-selector';

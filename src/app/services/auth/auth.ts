@@ -24,7 +24,17 @@ export class AuthService {
   constructor(
     private http: HttpClient, 
     public usersService: UsersService
-  ) {}
+  ) {
+    const tokenLocal = localStorage.getItem("token");
+    const tokenSession = sessionStorage.getItem("token");
+
+    const token = tokenLocal || tokenSession;
+
+    if(token)
+    {
+      this.token.next(token);
+    }
+  }
 
   register(data: RegisterData):Observable<any>
   {

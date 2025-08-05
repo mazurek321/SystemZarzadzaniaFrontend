@@ -15,7 +15,6 @@ import { Subscription } from 'rxjs';
 export class TopBar implements OnInit{
 
   @Input() user: UserDto | null = null;
-
   
   notifIsHidden = true;
   userIsHidden = true;

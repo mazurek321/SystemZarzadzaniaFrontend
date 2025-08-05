@@ -1,6 +1,8 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { UserDto } from '../users/users';
+import { PagedResult } from '../../shared/paged-results';
 
 export interface TaskDto {
   id: string;
@@ -16,8 +18,8 @@ export interface TaskDto {
   updatedBy: string;
   users: string[];         
   categories: number[];  
+  createdByUser?: UserDto;
 }
-
 
 @Injectable({
   providedIn: 'root'
@@ -32,7 +34,7 @@ export class Taskservice {
     return this.http.get<TaskDto>(`${this.apiUrl}?taskId=${taskId}`);
   }
 
-  browseTasks(pageNumber = 1, pageSize = 25, userId?: string, categories?: number[]): Observable<TaskDto[]> {
+  browseTasks(pageNumber = 1, pageSize = 25, userId?: string, categories?: number[]): Observable<PagedResult<TaskDto>> {
     let params = new HttpParams()
       .set('pageNumber', pageNumber.toString())
       .set('pageSize', pageSize.toString());
@@ -47,7 +49,7 @@ export class Taskservice {
       });
     }
 
-    return this.http.get<TaskDto[]>(`${this.apiUrl}/browse`, { params });
+    return this.http.get<PagedResult<TaskDto>>(`${this.apiUrl}/browse`, { params });
   }
 
   createTask(task: Partial<TaskDto>): Observable<TaskDto> {
@@ -56,6 +58,16 @@ export class Taskservice {
 
   updateTask(id: string, task: Partial<TaskDto>): Observable<TaskDto> {
     return this.http.put<TaskDto>(`${this.apiUrl}?id=${id}`, task);
+  }
+
+  startTask(id: string): Observable<TaskDto>
+  {
+    return this.http.put<TaskDto>(`${this.apiUrl}/start?taskId=${id}`, {});
+  }
+  
+  endTask(id: string): Observable<TaskDto>
+  {
+    return this.http.put<TaskDto>(`${this.apiUrl}/done?taskId=${id}`, {});
   }
 
   deleteTask(id: string): Observable<void> {

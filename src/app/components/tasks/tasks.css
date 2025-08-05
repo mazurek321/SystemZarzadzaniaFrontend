@@ -112,67 +112,115 @@
     margin-top: 3em;
 }
 
-.task-row td {
+.task-row td{
   background: var(--background-top-bar-dark);
   padding: 10px;
   border: 1px solid transparent;
   cursor: pointer;
 }
 
-.task-row:hover td
+.task-row:hover 
 {
     background: var(--background-top-bar-dark-hover);
 }
 
-.task-row:first-child td:first-child {
+.task-row:first-child :first-child {
   border-top-left-radius: 8px;
 }
 
-.task-row:first-child td:last-child {
+.task-row:first-child :last-child {
   border-top-right-radius: 8px;
 }
 
-.task-row:last-child td:first-child {
+.task-row:last-child :first-child {
   border-bottom-left-radius: 8px;
 }
 
-.task-row:last-child td:last-child {
+.task-row:last-child :last-child {
   border-bottom-right-radius: 8px;
 }
 
-.task-row.InProgress td
+.task-row.Pending
+{
+    background: var(--background-pending-task);
+}
+.task-row.Pending:hover
+{
+    background: var(--background-pending-task-dark);
+}
+
+.task-row.InProgress 
 {
     background: var(--background-active-task);
 }
-.task-row.InProgress:hover td
+.task-row.InProgress:hover 
 {
     background: var(--background-active-task-dark);
 }
 
-.task-row.Done td
+.task-row.Done 
 {
     background: var(--background-completed-task);
 }
-.task-row.Done:hover td
+.task-row.Done:hover 
 {
     background: var(--background-completed-task-dark);
 }
-.task-row.Almostdue td
+.task-row.Almosue 
 {
     background: var(--background-comming-deadline-task);
 }
-.task-row.Almostdue:hover td
+.task-row.Almosue:hover 
 {
     background: var(--background-comming-deadline-task-dark);
 }
-.task-row.Overdue td
+.task-row.Overdue 
 {
     background: var(--background-after-deadline-task);
 }
-.task-row.Overdue:hover td
+.task-row.Overdue:hover 
 {
     background: var(--background-after-deadline-task-dark);
 }
+
+.task-row.InProgressAlmosue 
+{
+    background: var(--background-inprogressalmosue-task);
+}
+.task-row.InProgressAlmosue:hover 
+{
+    background: var(--background-inprogressalmosue-task-dark);
+}
+.task-row.InProgressOverdue 
+{
+    background: var(--background-inprogressoverdue-task);
+}
+.task-row.InProgressOverdue:hover 
+{
+    background: var(--background-inprogressoverdue-task-dark);
+}
+.task-row.DoneAlmosue 
+{
+    background: var(--background-donealmosue-task);
+}
+.task-row.DoneAlmosue:hover 
+{
+    background: var(--background-donealmosue-task-dark);
+}
+.task-row.DoneOverdue 
+{
+    background: var(--background-doneoverdue-task);
+}
+.task-row.DoneOverdue:hover 
+{
+    background: var(--background-doneoverdue-task-dark);
+}
+
+.task-row td
+{
+    background: transparent;
+}
+
 
 table
 {
@@ -204,7 +252,8 @@ th
     left:0;
     background: transparent;
     content: '';
-    z-index: -1;
+    z-index: 1;
+    cursor:auto;
 }
 
 .isFilterHidden,
@@ -412,7 +461,7 @@ div label
 
 
 
-.task-row td:last-child
+.task-row :last-child
 {
     position: relative;
 }

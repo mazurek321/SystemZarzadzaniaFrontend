@@ -1,7 +1,8 @@
-  import { HttpClient } from '@angular/common/http';
-  import { Injectable } from '@angular/core';
-  import { BehaviorSubject, Observable, tap } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
+import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { TaskDto } from '../tasks/taskservice';
+import { PagedResult } from '../../shared/paged-results';
 
   export interface UserDto
   {
@@ -24,11 +25,6 @@ import { TaskDto } from '../tasks/taskservice';
     lastname: string;
     email: string;
     phone: string;
-  }
-
-  export interface PagedResult<T> {
-    items: T[];
-    totalCount: number;
   }
 
   @Injectable({

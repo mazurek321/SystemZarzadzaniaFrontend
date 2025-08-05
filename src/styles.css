@@ -17,6 +17,8 @@
   --background-alert: rgb(237, 168, 168);
   --background-normal: rgb(244, 231, 169);
 
+  --background-pending-task: rgb(204, 204, 204);
+  --background-pending-task-dark: rgb(156, 156, 156);
   --background-active-task: rgba(33, 83, 220, 0.5);
   --background-completed-task: rgba(95, 220, 33, 0.5);
   --background-comming-deadline-task: rgba(235, 161, 14, 0.5);
@@ -25,6 +27,14 @@
   --background-completed-task-dark: rgba(73, 202, 9, 0.719);
   --background-comming-deadline-task-dark: rgba(235, 161, 14, 0.767);
   --background-after-deadline-task-dark: rgba(219, 46, 40, 0.76);
+  --background-inprogressalmostdue-task: linear-gradient(to right,rgba(33, 83, 220, 0.5), rgba(235, 161, 14, 0.5));
+  --background-inprogressalmostdue-task-dark: linear-gradient(to right,rgba(22, 66, 188, 0.633), rgba(235, 161, 14, 0.767));
+  --background-inprogressoverdue-task: linear-gradient(to right,rgba(22, 66, 188, 0.633), rgba(219, 46, 40, 0.5));
+  --background-inprogressoverdue-task-dark: linear-gradient(to right,rgba(22, 66, 188, 0.633), rgba(219, 46, 40, 0.76));
+  --background-donealmostdue-task: linear-gradient(to right,rgba(95, 220, 33, 0.5), rgba(235, 161, 14, 0.5));
+  --background-donealmostdue-task-dark: linear-gradient(to right, rgba(73, 202, 9, 0.719), rgba(235, 161, 14, 0.767));
+  --background-doneoverdue-task: linear-gradient(to right, rgba(95, 220, 33, 0.5), rgba(219, 46, 40, 0.5));
+  --background-doneoverdue-task-dark: linear-gradient(to right,rgba(73, 202, 9, 0.719), rgba(219, 46, 40, 0.76));
 
   --background-light-blue: rgb(169, 197, 231);
   --border-blue: rgb(0, 0, 94);
